@@ -45,3 +45,5 @@ Question 6: Yorkville West
     GROUP BY 1
     ORDER BY 2 DESC
     LIMIT 10
+
+Question 7: terraform init, terraform apply -auto-approve, terraform destroy
