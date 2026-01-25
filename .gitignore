@@ -253,4 +253,5 @@ terraform.rc
 # Uncomment the line below if you want to ignore planout files.
 # planout
 
-/01_docker/terraform/keys/
+/01_docker/terraform/keys
+settings.json
