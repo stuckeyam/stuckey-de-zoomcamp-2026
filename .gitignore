@@ -254,4 +254,5 @@ terraform.rc
 # planout
 
 /01_docker/terraform/keys
+/02_orchestration/keys
 settings.json
