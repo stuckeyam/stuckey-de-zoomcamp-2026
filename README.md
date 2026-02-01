@@ -55,3 +55,27 @@ GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 10
 ```
+
+## Module 2 - Orchestration
+
+### Homework 
+
+- Question 3
+```
+SELECT count(1)
+FROM `zoomcamp.yellow_tripdata`
+WHERE filename like '%2020%'
+```
+
+- Question 4
+```
+SELECT count(1)
+FROM `zoomcamp.green_tripdata`
+WHERE filename like '%2020%'
+```
+
+- Question 5
+```
+SELECT count(1)
+FROM `zoomcamp.yellow_tripdata_2021_03`;
+```
