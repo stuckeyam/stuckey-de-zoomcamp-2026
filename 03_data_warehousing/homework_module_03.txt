@@ -1,0 +1,49 @@
+Question 1: 20,332,093
+
+Question 2: 0 MB for the External Table and 155.12 MB for the Materialized Table
+
+    SELECT DISTINCT PULocationID 
+    FROM `de-zoomcamp-2026-485420.zoomcamp.external_yellow_tripdata`
+
+    SELECT DISTINCT PULocationID 
+    FROM `de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024`
+
+Question 3: BigQuery is a columnar database...
+
+    SELECT PULocationID
+    FROM `de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024`
+
+    SELECT PULocationID, DOLocationID
+    FROM `de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024`
+
+Question 4: 8,333
+
+    SELECT COUNT(1)
+    FROM de-zoomcamp-2026-485420.zoomcamp.external_yellow_tripdata
+    WHERE fare_amount = 0
+
+Question 5: Partition by tpep_dropoff_datetime and Cluster on VendorID
+
+    CREATE TABLE de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024_w_partions_clusters
+    PARTITION BY DATE(tpep_pickup_datetime)
+    CLUSTER BY VendorID AS ( 
+        SELECT * 
+        FROM de-zoomcamp-2026-485420.zoomcamp.external_yellow_tripdata
+    )
+
+Question 6: 310.24 MB for non-partitioned table and 26.84 MB for the partitioned table
+
+    SELECT DISTINCT VendorID
+    FROM de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024
+    WHERE DATE(tpep_dropoff_datetime) > DATE('2024-03-01')
+        AND DATE(tpep_dropoff_datetime) < DATE('2024-03-16');
+
+    SELECT DISTINCT VendorID
+    FROM de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024_w_partions_clusters
+    WHERE DATE(tpep_dropoff_datetime) > DATE('2024-03-01')
+        AND DATE(tpep_dropoff_datetime) < DATE('2024-03-16');
+
+Question 7: GCP Bucket
+
+Question 8: FALSE
+

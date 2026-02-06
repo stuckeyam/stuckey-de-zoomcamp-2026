@@ -79,3 +79,52 @@ WHERE filename like '%2020%'
 SELECT count(1)
 FROM `zoomcamp.yellow_tripdata_2021_03`;
 ```
+
+
+## Module 3 - Data Warehousing & BigQuery
+
+### Homework 
+
+- Question 2
+```
+SELECT DISTINCT PULocationID 
+FROM `de-zoomcamp-2026-485420.zoomcamp.external_yellow_tripdata`;
+
+SELECT DISTINCT PULocationID 
+FROM `de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024`;
+```
+- Question 3
+```
+SELECT PULocationID
+FROM `de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024`;
+
+SELECT PULocationID, DOLocationID
+FROM `de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024`;
+```
+- Question 4
+```    
+SELECT COUNT(1)
+FROM de-zoomcamp-2026-485420.zoomcamp.external_yellow_tripdata
+WHERE fare_amount = 0
+```
+- Question 5
+```
+CREATE TABLE de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024_w_partions_clusters
+PARTITION BY DATE(tpep_pickup_datetime)
+CLUSTER BY VendorID AS ( 
+    SELECT * 
+    FROM de-zoomcamp-2026-485420.zoomcamp.external_yellow_tripdata
+)
+```
+- Question 6
+```
+SELECT DISTINCT VendorID
+FROM de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024
+WHERE DATE(tpep_dropoff_datetime) > DATE('2024-03-01')
+    AND DATE(tpep_dropoff_datetime) < DATE('2024-03-16');
+
+SELECT DISTINCT VendorID
+FROM de-zoomcamp-2026-485420.zoomcamp.yellow_tripdata_2024_w_partions_clusters
+WHERE DATE(tpep_dropoff_datetime) > DATE('2024-03-01')
+    AND DATE(tpep_dropoff_datetime) < DATE('2024-03-16');
+```
